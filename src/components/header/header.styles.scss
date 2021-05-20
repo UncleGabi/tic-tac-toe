@@ -1,0 +1,42 @@
+.header {
+  margin-top: 20px;
+  color: white;
+
+  button {
+    font-size: larger;
+    background-color: tomato;
+    padding: 10px 20px;
+    border: 1px solid #bb1919;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.header-data {
+  color: white;
+  font-size: larger;
+  font-weight: bolder;
+  margin: 20px 0;
+  padding: 20px;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  input {
+    padding: 10px;
+    margin: 0 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+
+    &:disabled {
+      background-color: #fefefe;
+      color: black;
+      cursor: not-allowed;
+    }
+  }
+}
