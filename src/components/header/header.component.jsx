@@ -1,6 +1,6 @@
 import "./header.styles.scss";
 
-import DropDown from "../DropDownList/dropdown-list.components";
+import DropDown from "../dropdown-list/dropdown-list.components";
 import PlayerInput from "../player-input/player-input.component";
 
 function Header({
