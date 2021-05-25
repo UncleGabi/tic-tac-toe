@@ -24,12 +24,15 @@ class App extends Component {
   }
 
   componentDidMount = () => {
+    // initialize the array that builds up the board of buttons
     const { size } = this.state;
     this.setState({ board: Array(size ** 2).fill("") });
     this.setWinnerSteps(size);
   };
 
   handleSizeChange = (e) => {
+    // in case of a size change, the board gets re-rendered
+    // and it also readjusts the number of frs according to the board size
     const { value } = e.target;
     const { size } = this.state;
 
@@ -49,6 +52,7 @@ class App extends Component {
   };
 
   setPlayerName = (e) => {
+    // simply sets the names of the players
     const { gameOver } = this.state;
     const { value, name } = e.target;
 
@@ -60,6 +64,7 @@ class App extends Component {
   };
 
   setPlayers = () => {
+    // decides which player to start and makes the board visible
     const { player1, player2 } = this.state;
     const randomNumber = Math.random();
     const player1_name = player1[0];
@@ -86,6 +91,7 @@ class App extends Component {
   };
 
   restart = () => {
+    // resets the state to default
     const { size, player1, player2 } = this.state;
 
     this.setState({
@@ -102,6 +108,8 @@ class App extends Component {
   };
 
   setStart = () => {
+    // if the game is over, resets the state to default and the order of players
+    // in the beginning it just sets the order of players
     const { gameOver } = this.state;
 
     if (gameOver) {
@@ -112,6 +120,9 @@ class App extends Component {
   };
 
   handleClick = (event) => {
+    // when a board-button is clicked, X/O is added, updates the board
+    // checks if we have a winner or it's a tie
+    // in case of a tie, it resets the state to default
     const { count, size, player1, player2, currentPlayer, board, xIsNext } =
       this.state;
     const { id, value } = event.target;
@@ -140,6 +151,8 @@ class App extends Component {
   };
 
   getWinner = () => {
+    // it creats a subarray according to the ids given in the winnerSteps array
+    // then the X/Os of the given ID-s are added to a temporary list, if they are of the same kind, we have a winner
     const { board, currentPlayer, winnerSteps, size } = this.state;
     const steps = [];
 
@@ -171,7 +184,8 @@ class App extends Component {
   };
 
   setWinnerSteps = (boardSize) => {
-    let count = 1;
+    // generates the winnerSteps according to the size of the board (Columns, Rows, Diagonals)
+    // A player needs to go through all the way through a column/row/diagonal to win
     const { size } = this.state;
     boardSize = size;
     const allBoxes = size ** 2;
@@ -224,7 +238,7 @@ class App extends Component {
   };
 
   render() {
-    const { count, player1, player2, board, currentPlayer, gameOver } =
+    const { count, size, player1, player2, board, currentPlayer, gameOver } =
       this.state;
     let id = -1;
 
